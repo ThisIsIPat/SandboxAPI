@@ -22,7 +22,7 @@ public interface Plant extends IBlock {
     /**
      * @return Empty mono if can be planted, otherwise mono with the correct failure
      */
-    Mono<PlantableFailure> canBePlanted(WorldReader world, Position position, BlockState state);
+    Mono<PlantableFailure> canBePlanted(WorldReader world, Position position);
 
     boolean canHarvest(WorldReader world, Position position, BlockState state, Mono<Player> player);
 
