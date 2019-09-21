@@ -176,6 +176,13 @@ public interface IBlock extends ItemProvider {
         return Fluids.EMPTY;
     }
 
+    /**
+     * @return Mono of the tilled block related to this block
+     */
+    default Mono<IBlock> asTilled() {
+        return Mono.empty();
+    }
+
     class Settings {
         private final Material material;
 
