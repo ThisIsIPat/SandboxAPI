@@ -11,10 +11,4 @@ public interface PlantSeed extends IItem {
     Plant asPlant();
 
     BlockState getPlantState(WorldReader world, Position position, ItemStack seeds, Mono<Player> player);
-
-    boolean placePlant(WorldReader world, Position position, ItemStack seeds, Mono<Player> player);
-
-    default Mono<Plant.PlantableFailure> canBePlanted(WorldReader world, Position position) {
-        return asPlant().canBePlanted(world, position);
-    }
 }
