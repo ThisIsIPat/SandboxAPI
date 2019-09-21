@@ -30,6 +30,8 @@ public interface Plant extends IBlock {
 
     Set<ItemStack> harvest(World world, Position position, BlockState state, Mono<Player> player);
 
+    boolean canFertilize(World world, Position position, BlockState state, ItemStack fertilizer);
+
     boolean fertilize(World world, Position position, BlockState state, ItemStack fertilizer);
 
     PlantSeed asSeed();
