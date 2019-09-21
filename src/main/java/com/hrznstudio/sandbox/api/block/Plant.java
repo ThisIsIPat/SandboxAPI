@@ -24,6 +24,8 @@ public interface Plant extends IBlock {
      */
     Mono<PlantableFailure> canBePlanted(WorldReader world, Position position);
 
+    Mono<PlantableFailure> placePlant(WorldReader world, Position position, ItemStack seeds, Mono<Player> player);
+
     boolean canHarvest(WorldReader world, Position position, BlockState state, Mono<Player> player);
 
     Set<ItemStack> harvest(World world, Position position, BlockState state, Mono<Player> player);

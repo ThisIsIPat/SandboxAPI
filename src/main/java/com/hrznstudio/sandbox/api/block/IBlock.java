@@ -183,6 +183,13 @@ public interface IBlock extends ItemProvider {
         return Mono.empty();
     }
 
+    /**
+     * @return true if plant can be planted on this block
+     */
+    default boolean canPlantHere(World world, Position position, BlockState state, Plant plant) {
+        return false;
+    }
+
     class Settings {
         private final Material material;
 
