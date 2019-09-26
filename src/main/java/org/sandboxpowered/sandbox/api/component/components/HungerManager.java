@@ -1,13 +1,10 @@
 package org.sandboxpowered.sandbox.api.component.components;
 
 import org.sandboxpowered.sandbox.api.item.ItemStack;
+import org.sandboxpowered.sandbox.api.util.Mono;
 
-public interface HungerComponent {
-    default boolean canConsume() {
-        return canConsume(false);
-    }
-
-    default void add(int food) {
+public interface HungerManager {
+    default void addFood(int food) {
         add(food, 0);
     }
 
@@ -19,7 +16,15 @@ public interface HungerComponent {
 
     boolean eat(ItemStack stack);
 
-    boolean canConsume(boolean ignoreMaxFood);
+    default boolean canConsume() {
+        return canConsume(Mono.empty());
+    }
+
+    default boolean canConsume(ItemStack stack) {
+        return canConsume(Mono.of(stack));
+    }
+
+    boolean canConsume(Mono<ItemStack> stackMono);
 
     boolean isFull();
 
