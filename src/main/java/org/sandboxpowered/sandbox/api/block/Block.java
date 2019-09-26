@@ -149,6 +149,21 @@ public interface Block extends ItemProvider {
         return false;
     }
 
+    /**
+     * @return Mono of the tilled block related to this block
+     */
+    default Mono<Block> asTilled() {
+        return Mono.empty();
+    }
+
+    /**
+     * @return true if plant can be planted on this block
+     */
+    default boolean canPlantHere(World world, Position position, BlockState state, Plant plant) {
+        return false;
+    }
+
+
     class Settings {
         private final Material material;
 
