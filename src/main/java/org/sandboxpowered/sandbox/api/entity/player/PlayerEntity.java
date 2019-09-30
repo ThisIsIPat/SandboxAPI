@@ -1,6 +1,7 @@
 package org.sandboxpowered.sandbox.api.entity.player;
 
 import org.sandboxpowered.sandbox.api.entity.LivingEntity;
+import org.sandboxpowered.sandbox.api.permission.PermissionHolder;
 import org.sandboxpowered.sandbox.api.util.Identity;
 import org.sandboxpowered.sandbox.api.util.Mono;
 import org.sandboxpowered.sandbox.api.util.annotation.Alpha;
@@ -8,7 +9,7 @@ import org.sandboxpowered.sandbox.api.util.nbt.CompoundTag;
 import org.sandboxpowered.sandbox.api.util.text.Text;
 
 @Alpha
-public interface PlayerEntity extends LivingEntity {
+public interface PlayerEntity extends LivingEntity, PermissionHolder {
 
     void sendChatMessage(Text text);
 
