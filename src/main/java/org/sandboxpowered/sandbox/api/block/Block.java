@@ -1,6 +1,8 @@
 package org.sandboxpowered.sandbox.api.block;
 
 import org.sandboxpowered.sandbox.api.block.entity.BlockEntity;
+import org.sandboxpowered.sandbox.api.block.multipart.BlockSlot;
+import org.sandboxpowered.sandbox.api.block.multipart.Slot;
 import org.sandboxpowered.sandbox.api.component.Component;
 import org.sandboxpowered.sandbox.api.entity.Entity;
 import org.sandboxpowered.sandbox.api.entity.player.Hand;
@@ -147,6 +149,14 @@ public interface Block extends ItemProvider {
 
     default boolean isNaturalStone() {
         return false;
+    }
+
+    default Slot getSlot(BlockState state) {
+        return BlockSlot.EMPTY;
+    }
+
+    default InteractionResult testOcclusion(BlockState state, WorldReader reader, Position position, BlockState otherState) {
+        return InteractionResult.IGNORE;
     }
 
     class Settings {
