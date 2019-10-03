@@ -13,6 +13,7 @@ import org.sandboxpowered.sandbox.api.state.StateFactory;
 import org.sandboxpowered.sandbox.api.util.*;
 import org.sandboxpowered.sandbox.api.util.math.Position;
 import org.sandboxpowered.sandbox.api.util.math.Vec3f;
+import org.sandboxpowered.sandbox.api.util.shape.Shape;
 import org.sandboxpowered.sandbox.api.world.World;
 import org.sandboxpowered.sandbox.api.world.WorldReader;
 
@@ -84,8 +85,20 @@ public interface Block extends ItemProvider {
      *
      * @return The @{@link BlockState} to set in the world
      */
-    default BlockState updateOnNeighborChanged(BlockState state, Direction direction, BlockState otherState, World world, Position position, Position otherPosition) {
+    default BlockState updateOnNeighborChanged(World world, Position position, BlockState state, Direction direction, Position otherPosition, BlockState otherState) {
         return state;
+    }
+
+    default Shape getShape(WorldReader world, Position position, BlockState state, Mono<Entity> entity) {
+        return Shape.full();
+    }
+
+    default Shape getCollisionShape(WorldReader world, Position position,BlockState state, Mono<Entity> entity) {
+        return getShape(world, position, state, entity);
+    }
+
+    default Shape getOutlineShape(WorldReader world, Position position, BlockState state, Mono<Entity> entity) {
+        return getShape(world, position, state, entity);
     }
 
     /**

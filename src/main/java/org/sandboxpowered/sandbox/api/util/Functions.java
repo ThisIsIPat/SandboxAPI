@@ -18,6 +18,8 @@ import org.sandboxpowered.sandbox.api.util.math.Position;
 import org.sandboxpowered.sandbox.api.util.math.Vec3i;
 import org.sandboxpowered.sandbox.api.util.nbt.CompoundTag;
 import org.sandboxpowered.sandbox.api.util.nbt.ReadableCompoundTag;
+import org.sandboxpowered.sandbox.api.util.shape.BoundingBox;
+import org.sandboxpowered.sandbox.api.util.shape.Shape;
 import org.sandboxpowered.sandbox.api.util.text.Text;
 
 import java.util.function.BiFunction;
@@ -88,5 +90,17 @@ public class Functions {
     };
     public static final Function<ReadableCompoundTag, ItemStack> itemStackFromTagFunction = tag -> {
         throw new RuntimeException("No ItemStack Tag Function Loaded, Report this as a bug!");
+    };
+    public static Supplier<Shape> emptyShape = () -> {
+        throw new RuntimeException("No Empty Shape Getter Loaded, Report this as a bug!");
+    };
+    public static Supplier<Shape> fullShape = () -> {
+        throw new RuntimeException("No Full Shape Getter Loaded, Report this as a bug!");
+    };
+    public static Function<double[], BoundingBox> boundingBox = (arr) -> {
+        throw new RuntimeException("No Bounding Box Function Loaded, Report this as a bug!");
+    };
+    public static Function<BoundingBox, Shape> shapeFromBox = (arr) -> {
+        throw new RuntimeException("No Shape from Bounding Box Function Loaded, Report this as a bug!");
     };
 }
