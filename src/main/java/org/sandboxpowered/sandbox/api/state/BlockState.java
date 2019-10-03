@@ -35,28 +35,28 @@ public interface BlockState extends PropertyContainer<BlockState> {
         return getBlock().mirror(this, mirror);
     }
 
-    default Shape getShape(WorldReader world, Position position, BlockState state) {
-        return getShape(world, position, state, Mono.empty());
+    default Shape getShape(WorldReader world, Position position) {
+        return getBlock().getShape(world, position, this, Mono.empty());
     }
 
-    default Shape getShape(WorldReader world, Position position, BlockState state, Mono<Entity> entity) {
-        return getBlock().getShape(world, position, state, entity);
+    default Shape getShape(WorldReader world, Position position, Mono<Entity> entity) {
+        return getBlock().getShape(world, position, this, entity);
     }
 
-    default Shape getCollisionShape(WorldReader world, Position position, BlockState state) {
-        return getCollisionShape(world, position, state, Mono.empty());
+    default Shape getCollisionShape(WorldReader world, Position position) {
+        return getBlock().getCollisionShape(world, position, this, Mono.empty());
     }
 
-    default Shape getCollisionShape(WorldReader world, Position position, BlockState state, Mono<Entity> entity) {
-        return getBlock().getCollisionShape(world, position, state, entity);
+    default Shape getCollisionShape(WorldReader world, Position position, Mono<Entity> entity) {
+        return getBlock().getCollisionShape(world, position, this, entity);
     }
 
-    default Shape getOutlineShape(WorldReader world, Position position, BlockState state) {
-        return getOutlineShape(world, position, state, Mono.empty());
+    default Shape getOutlineShape(WorldReader world, Position position) {
+        return getBlock().getOutlineShape(world, position, this, Mono.empty());
     }
 
-    default Shape getOutlineShape(WorldReader world, Position position, BlockState state, Mono<Entity> entity) {
-        return getBlock().getOutlineShape(world, position, state, entity);
+    default Shape getOutlineShape(WorldReader world, Position position, Mono<Entity> entity) {
+        return getBlock().getOutlineShape(world, position, this, entity);
     }
 
     default <X> Mono<X> getComponent(WorldReader world, Position position, Component<X> component) {
