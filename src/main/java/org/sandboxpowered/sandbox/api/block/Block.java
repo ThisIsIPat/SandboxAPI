@@ -27,11 +27,14 @@ public interface Block extends ItemProvider {
 
     /**
      * Grabs the Block as an {@link Item}
-     *
-     * @return
      */
     @Override
     Mono<Item> asItem();
+
+    /**
+     * The translation key associated with this Block
+     */
+    String getTranslationKey();
 
     default <X> Mono<X> getComponent(WorldReader world, Position position, BlockState state, Component<X> component) {
         return getComponent(world, position, state, component, Mono.empty());

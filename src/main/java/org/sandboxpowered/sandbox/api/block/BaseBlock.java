@@ -18,9 +18,19 @@ public class BaseBlock implements Block {
     private final Settings settings;
     private Mono<Item> itemCache;
     private StateFactory<Block, BlockState> stateFactory;
+    private String translationKey;
 
     public BaseBlock(Settings settings) {
         this.settings = settings;
+    }
+
+    @Override
+    public String getTranslationKey() {
+        if (this.translationKey == null) {
+            this.translationKey = Registries.BLOCK.getIdentity(this).asTranslation("block");
+        }
+
+        return this.translationKey;
     }
 
     @Override

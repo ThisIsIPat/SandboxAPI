@@ -17,6 +17,11 @@ public interface Item {
 
     Settings getSettings();
 
+    /**
+     * The translation key associated with this Item
+     */
+    String getTranslationKey();
+
     default void appendTooltipText(ItemStack cast, @Nullable World world, List<Text> tooltip, boolean advanced) {
 
     }
