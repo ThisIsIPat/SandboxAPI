@@ -9,19 +9,19 @@ import java.util.List;
 public interface Shape {
 
     static Shape empty() {
-        return Functions.emptyShape.get();
+        return Functions.getInstance().emptyShape();
     }
 
     static Shape full() {
-        return Functions.fullShape.get();
+        return Functions.getInstance().fullShape();
     }
 
     static Shape cube(double x, double y, double z, double x2, double y2, double z2) {
-        return cube(Functions.boundingBox.apply(new double[]{x, y, z, x2, y2, z2}));
+        return cube(Functions.getInstance().createBoundingBox(x,y,z,x2,y2,z2));
     }
 
     static Shape cube(BoundingBox box) {
-        return Functions.shapeFromBox.apply(box);
+        return Functions.getInstance().shapeFromBox(box);
     }
 
     Hit.BlockHit trace(Vec3d start, Vec3d end, Position position);

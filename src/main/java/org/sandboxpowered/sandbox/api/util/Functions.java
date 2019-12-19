@@ -70,4 +70,12 @@ public interface Functions {
     <T> Component<T> componentFunction(Class<T> c);
 
     Entity.Type entityTypeEntityFunction(Entity e);
+
+    BoundingBox createBoundingBox(double x, double y, double z, double x2, double y2, double z2);
+
+    Shape fullShape();
+
+    Shape emptyShape();
+
+    Shape shapeFromBox(BoundingBox box);
 }
