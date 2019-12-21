@@ -10,7 +10,7 @@ import javax.annotation.Nullable;
 public interface Client {
 
     static Client getInstance() {
-        return Functions.clientInstance.get();
+        return Functions.getInstance().clientInstance();
     }
 
     PlayerEntity getPlayer();
@@ -21,4 +21,6 @@ public interface Client {
     Screen getCurrentScreen();
 
     TextRenderer getTextRenderer();
+
+    Session getSession();
 }

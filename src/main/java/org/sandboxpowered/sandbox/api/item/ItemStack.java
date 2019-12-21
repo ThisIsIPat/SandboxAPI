@@ -2,10 +2,13 @@ package org.sandboxpowered.sandbox.api.item;
 
 import org.sandboxpowered.sandbox.api.component.Component;
 import org.sandboxpowered.sandbox.api.enchant.Enchantment;
+import org.sandboxpowered.sandbox.api.registry.Registry;
 import org.sandboxpowered.sandbox.api.util.Functions;
 import org.sandboxpowered.sandbox.api.util.Mono;
 import org.sandboxpowered.sandbox.api.util.nbt.CompoundTag;
 import org.sandboxpowered.sandbox.api.util.nbt.ReadableCompoundTag;
+
+import javax.annotation.Nullable;
 
 public interface ItemStack {
 
@@ -30,7 +33,7 @@ public interface ItemStack {
     }
 
     static ItemStack of(Item item, int amount) {
-        return Functions.itemStackFunction.apply(item, amount);
+        return Functions.getInstance().createItemStack(item, amount);
     }
 
     static ItemStack empty() {
@@ -38,7 +41,7 @@ public interface ItemStack {
     }
 
     static ItemStack read(ReadableCompoundTag tag) {
-        return Functions.itemStackFromTagFunction.apply(tag);
+        return Functions.getInstance().createItemStackFromTag(tag);
     }
 
     boolean isEmpty();
@@ -67,12 +70,14 @@ public interface ItemStack {
 
     boolean hasTag();
 
+    @Nullable
     CompoundTag getTag();
 
     void setTag(CompoundTag tag);
 
     CompoundTag getOrCreateTag();
 
+    @Nullable
     CompoundTag getChildTag(String key);
 
     CompoundTag getOrCreateChildTag(String key);
@@ -90,4 +95,12 @@ public interface ItemStack {
     boolean isEqualToIgnoreDurability(ItemStack stack);
 
     boolean areTagsEqual(ItemStack stack);
+
+    boolean isDamaged();
+
+    boolean isDamageable();
+
+    int getMaxDamage();
+
+    int getDamage();
 }
