@@ -8,7 +8,7 @@ plugins {
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
-archivesBaseName = 'sandbox-api'
+archivesBaseName = 'sandboxapi'
 version = "${project.api_version}-SNAPSHOT"
 group = project.maven_group
 
@@ -57,7 +57,7 @@ publishing {
         if (System.getenv("mvn_username")) {
             maven {
                 name = "Maven"
-                url = uri("sftp://maven.sandboxpowered.org:22/")
+                url = uri("sftp://maven.sandboxpowered.org:22/sbxmvn/")
                 credentials {
                     username = System.getenv("mvn_username")
                     password = System.getenv("mvn_password")
