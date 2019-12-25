@@ -5,15 +5,39 @@ import com.google.common.annotations.Beta;
 @Beta
 public interface Gamepad extends InputDevice {
 
-    float getAxis(Stick stick, Axis axis);
+    /**
+     * Gets the stick's axis value, returns 0 if is within deadzone configuration of client.
+     *
+     * Always returns 0 or 1 if controller does not support pressure detection
+     *
+     * @return The value (0-1) that the stick has moved along the axis after deadzone checking
+     */
+    float getAxis(Side side, Axis axis);
 
-    float getTrigger(Trigger trigger);
+    /**
+     * Gets the trigger's activation value, returns 0 if is within deadzone configuration of client.
+     *
+     * Always returns 0 or 1 if controller does not support pressure detection
+     *
+     * @return The value (0-1) corresponding to the pressure of the trigger
+     */
+    float getTrigger(Side side);
 
-    boolean isDown(Button buttons);
+    /**
+     * Checks whether the button is currently pressed on the gamepad
+     *
+     * Returns false if button doesn't exist on gamepad
+     */
+    boolean isDown(Button button);
 
+    /**
+     * Checks whether the buttons are currently pressed on the gamepad
+     *
+     * Ignores buttons if they dont exist on gamepad
+     */
     boolean areDown(Button... buttons);
 
-    enum Stick {
+    enum Side {
         LEFT,
         RIGHT
     }
@@ -21,11 +45,6 @@ public interface Gamepad extends InputDevice {
     enum Axis {
         X,
         Y,
-    }
-
-    enum Trigger {
-        LEFT,
-        RIGHT,
     }
 
     enum Button {

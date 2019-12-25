@@ -4,4 +4,7 @@ import com.google.common.annotations.Beta;
 
 @Beta
 public interface Mouse extends InputDevice {
+    int getMouseX();
+
+    int getMouseY();
 }
