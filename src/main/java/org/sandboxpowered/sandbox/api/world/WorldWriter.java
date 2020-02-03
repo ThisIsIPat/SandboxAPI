@@ -12,14 +12,4 @@ public interface WorldWriter {
     default boolean setBlockState(Position position, BlockState state) {
         return setBlockState(position, state, BlockFlag.DEFAULT);
     }
-
-    default boolean breakBlock(Position position, boolean drop, Entity entity) {
-        return breakBlock(position, drop, Mono.of(entity));
-    }
-
-    default boolean breakBlock(Position position, boolean drop) {
-        return breakBlock(position, drop, Mono.empty());
-    }
-
-    boolean breakBlock(Position position, boolean drop, Mono<Entity> entity);
 }
