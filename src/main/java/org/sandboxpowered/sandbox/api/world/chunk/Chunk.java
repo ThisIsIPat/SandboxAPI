@@ -1,25 +1,27 @@
 package org.sandboxpowered.sandbox.api.world.chunk;
 
 import org.sandboxpowered.sandbox.api.state.BlockState;
+import org.sandboxpowered.sandbox.api.util.math.Position;
+import org.sandboxpowered.sandbox.api.util.math.Vec3i;
 import org.sandboxpowered.sandbox.api.world.World;
 
 /**
  * Represents blocks within a specified area with a position in a world
  */
 public interface Chunk {
-    public BlockState getBlockAt(int relX, int relY, int relZ);
-    public void setBlockAt(int relX, int relY, int relZ, BlockState blockState);
+    BlockState getBlockState(Position position);
+    void setBlockState(Position position, BlockState blockState);
 
     /**
      * @return world the chunk is located in
      */
-    public World getWorld();
+    World getWorld();
 
-    public int getX();
-    public int getY();
-    public int getZ();
+    int getX();
+    int getY();
+    int getZ();
 
-    public int getXSize();
-    public int getYSize();
-    public int getZSize();
+    int getXSize();
+    int getYSize();
+    int getZSize();
 }
